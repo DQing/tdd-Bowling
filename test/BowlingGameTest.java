@@ -12,7 +12,7 @@ public class BowlingGameTest {
 
     @Test
     public void should_return_0_when_scoring_given_every_roll_is_0() {
-        initBowlingGamePouredNum(0);
+        initBowlingGamePouredNum(0, 20);
 
         int score = bowlingGame.score();
 
@@ -21,15 +21,25 @@ public class BowlingGameTest {
 
     @Test
     public void should_return_correct_score_when_scoring_given_every_roll_is_3() {
-        initBowlingGamePouredNum(3);
+        initBowlingGamePouredNum(3, 20);
 
         int score = bowlingGame.score();
 
         Assert.assertEquals(60, score);
     }
 
-    private void initBowlingGamePouredNum(int pouredNumber) {
-        for (int rollIndex = 0; rollIndex < 20; rollIndex++) {
+    @Test
+    public void should_return_correct_score_when_scoring_given_rolls_contains_a_strike() {
+        bowlingGame.roll(10);
+        initBowlingGamePouredNum(3, 18);
+
+        int score = bowlingGame.score();
+
+        Assert.assertEquals(70, score);
+    }
+
+    private void initBowlingGamePouredNum(int pouredNumber, int index) {
+        for (int rollIndex = 0; rollIndex < index; rollIndex++) {
             bowlingGame.roll(pouredNumber);
         }
     }
