@@ -49,6 +49,15 @@ public class BowlingGameTest {
         Assert.assertEquals(67, score);
     }
 
+    @Test
+    public void should_return_correct_score_when_scoring_given_every_rolls_are_strike() {
+        initBowlingGamePouredNum(10, 12);
+
+        int score = bowlingGame.score();
+
+        Assert.assertEquals(300, score);
+    }
+
     private void initBowlingGamePouredNum(int pouredNumber, int index) {
         for (int rollIndex = 0; rollIndex < index; rollIndex++) {
             bowlingGame.roll(pouredNumber);
