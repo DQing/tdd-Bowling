@@ -38,6 +38,17 @@ public class BowlingGameTest {
         Assert.assertEquals(70, score);
     }
 
+    @Test
+    public void should_return_correct_score_when_scoring_given_rolls_contains_a_spare() {
+        bowlingGame.roll(4);
+        bowlingGame.roll(6);
+        initBowlingGamePouredNum(3, 18);
+
+        int score = bowlingGame.score();
+
+        Assert.assertEquals(67, score);
+    }
+
     private void initBowlingGamePouredNum(int pouredNumber, int index) {
         for (int rollIndex = 0; rollIndex < index; rollIndex++) {
             bowlingGame.roll(pouredNumber);
